@@ -1,24 +1,23 @@
 import express from 'express';
-import imagee from './api/imagee';
-//import logger from './../utilities/utils';
-//import validate from './../utilities/utils';
-//import utils from './../utilities/utils';
-//import students from './api/image';
-const routes = express.Router();
+import users from './api/users';
+import products from './api/products';
+import orders from './api/orders';
+import orderProducts from './api/orderProducts';
 
-// routes.get('/', (req, res) => {
-//     res.send('api routes');
-//    });
+const routes: express.Router = express.Router();
 
-// routes.use('/students',students);
+routes.use('/api/users', users);
+routes.use('/api/products', products);
+routes.use('/api/orders', orders);
+routes.use('/api/orderProducts', orderProducts);
 
-routes.use('/api/image', imagee);
-
-routes.get( 
-  '/', 
-  (request: express.Request, response: express.Response): void => {
-    // This could be done by serving views ... Just quick and dirty for now :-)
-    response.send('api image');
+routes.get(
+  '/',
+  (req: express.Request, res: express.Response): void => {
+   
+    res.send(
+      '<h1>Welcome</h1><p>Please check the readme for routes!</p>'
+    );
   }
 );
 
